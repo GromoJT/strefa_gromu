@@ -1,0 +1,44 @@
+---
+// @ts-nocheck
+import { slugify, formatDate } from "../js/utils";
+import { Picture} from "astro:assets";
+
+interface Props{
+    category:string;
+    title:string;
+    author:string;
+    date:Date;
+    cover: {};
+
+
+}
+
+
+const {category,title,author,date,cover} = Astro.props;
+
+import Icon from "astro-icon";
+//<Icon name="pen"/>
+---
+
+<header>
+    <div class="title-container">
+        
+        <h1 class="h2">{title}</h1>
+        <small>
+            <a href={`/category/${slugify(category)}/`} class="badge">{category}</a> 
+        </small>
+        <!-- <p>
+            <Icon name="ph:pencil-fill" width={27}/>
+            <a href={`/author/${slugify(author)}/`}>{author}</a> • 
+            {formatDate(date)}</p> -->
+        
+    </div>
+
+    <Picture 
+        src={cover.img} 
+        alt={cover.alt}
+        formats={['avif', 'webp']}
+        aspect-ratio={16/9}
+        class="hero-image"
+        > 
+</header>

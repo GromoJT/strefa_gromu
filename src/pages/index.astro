@@ -1,0 +1,61 @@
+---
+//@ts-nocheck
+import { getCollection, type CollectionEntry } from 'astro:content';
+import MainPageLayout from '../layouts/MainPageLayout.astro';
+import { formatBlogPosts } from '../js/utils';
+import PostCard from '../components/PostCard.astro';
+import banner from "../assets/Images/banner.png" 
+import { Image } from 'astro:assets';
+const allPosts = await getCollection("blog");
+const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts,{
+	limit:3
+});
+---
+
+<MainPageLayout title="Strefa Gromu">
+	<section class="container hero">
+		<section class="container hero-section" aria-label="Hero section">
+			<div class="infoPart">
+				<h1 class="h1">Witaj w strefie gromu!</h1>
+				<hr class="line">
+				<p>
+					<h3>Znalazłeś się tu ponieważ:</h3>
+						1. Jesteś kimś komu na tyle ufam, aby pokazać to co czasem zadarza mi się zrobić.<br />
+						2. Jseteś potencjalnym pracodawcą któremu podesłałem link do czegoś "ala portfolio".<br />
+						3. Zabłądziłeś w internecie...<br />
+					Niezeleżnie od powodu czuj się zaproszonym do zwiedzanie strony.<br /> Wielu rzeczy tu jeszcze brakuje, ale jest niezerowa szansa że kiedyś je dodam.
+				</p>
+			</div>
+			<div class="imagePart">
+				<Image         
+				src={banner} 
+				alt="test"
+				class="hero-image"
+				format="webp"
+				decoding="async"
+				loading="eager"
+				quality={80}
+				/>
+			</div>
+		</section>
+	
+	
+	
+	
+		<section class="container" aria-label="New Blog Posts">
+			<h2 class="h2">Ostatnie wpisy</h2>
+			<div class="post-container">
+				 {
+					formattedPosts.map((post) => 
+					<PostCard 
+						data={post.data} 
+						url={post.slug} 
+						tagType="h3"
+					/> 
+					)
+				} 
+			</div>
+		</section>
+	</section>
+</MainPageLayout> 
+
