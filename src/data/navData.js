@@ -22,6 +22,7 @@ const navData = [
         name: "O mnie",
         path:"/about",
     },
+  
 ]
 
 export default navData;

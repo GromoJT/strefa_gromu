@@ -5,6 +5,7 @@ import ToMaszCoMasz_Logo from "../assets/Images/ToMaszCoMasz_Logo.png";
 import { Image } from 'astro:assets';
 import Link from "./Link.astro";
 import DropDown from "./DropDown.astro";
+import VerticalDropDown from "./VerticalDropDown.astro";
 //data imports
 import navData from "../data/navData.js";
 import { Icon } from "astro-icon/components";
@@ -27,7 +28,7 @@ import { Icon } from "astro-icon/components";
             {
                 navData.map((item) => (
                     item.type ==="dropdown" ? 
-                    <DropDown text="Projekty" elements={item.elements}/>
+                    <DropDown text={item.name} elements={item.elements} message={item.name}/>
                     :
                     <Link 
                         href={item.path as string} 
@@ -45,6 +46,29 @@ import { Icon } from "astro-icon/components";
             <Icon name="burger" size={30}  />
         </div>
        
+        <div class="vertical-nav-container" id="vertical-nav-container">
+            <div class="closeButton" id="closeIcon">
+                <Icon name="close" size={30}  />
+            </div>
+            <ul class="verticalBar">
+                {
+                    navData.map((item) => (
+                        item.type ==="dropdown" ? 
+                        <VerticalDropDown text={item.name} elements={item.elements} message={item.name}/>
+                        :
+                        <Link 
+                            href={item.path as string} 
+                            text={item.name} 
+                            style="primary" 
+                            isVerticalSubelement={false}
+                            isFilled={false}
+                            borderVisible={false}
+                            data-navLink
+                            />
+                    ))
+                }
+            </ul>
+        </div>
 
 
     
@@ -53,7 +77,29 @@ import { Icon } from "astro-icon/components";
 
 <script>
     import "../js/nav.js";    
+    let isMenuOpen = false;
 
+    const verNav = document.getElementById("vertical-nav-container")
+
+    const burger = document.getElementById("menuIcon")?.addEventListener("click",()=> {
+        isMenuOpen = !isMenuOpen;
+        console.log(isMenuOpen)
+        isMenuOpen ? verNav?.classList.add("show") : verNav?.classList.remove("show") 
+    })
+
+    window.onresize = function(event) {
+        if(window.innerWidth > 926){
+            if(isMenuOpen){
+                verNav?.classList.remove("show")
+                isMenuOpen = false;
+            }  
+        }
+    };
+
+    const closeBtn = document.getElementById("closeIcon")?.addEventListener("click",()=>{
+        verNav?.classList.remove("show")
+        isMenuOpen = false;
+    })
 
 </script>
 
@@ -69,15 +115,54 @@ import { Icon } from "astro-icon/components";
         @media(--md){
             display: none;
         }
+        z-index: 999;
     }
 
     .burgerButton{
         display: none;
 
-        
+    
         @media(--md){
             color: green;
             display:inline-table;
         }
+    }
+    .closeButton{
+        background-color: red;
+        margin: 3px;
+        border-radius: 1em;
+        display: flex;
+        justify-content: center;
+        margin-top: 1em;
+        margin-bottom: 1em;
+    }
+
+    .vertical-nav-container{
+        display: none;
+        /* @media(--md){
+            display: block;
+        } */
+        position: absolute;
+        background-color: black;
+        width: 33vw;
+        height: 100vh;
+        top:0;
+        right: 0;
+        z-index: 1;
+        
+    }
+
+    .show{
+        @media(--md){
+            display: block;
+        }
+    }
+
+    .verticalBar{
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        overflow-y: auto;
+        max-height: 80lvh;
     }
 </style>

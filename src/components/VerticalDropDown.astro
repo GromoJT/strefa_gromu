@@ -1,0 +1,88 @@
+---
+
+import Link from './Link.astro';
+interface Props{
+    text: string;
+    elements:any;
+    classes?: string;
+    message:string;
+}
+const {
+    text,
+    elements,
+    classes,
+    message,
+    ...rest
+ } = Astro.props as Props;
+
+import DropDownArrow from '../icons/downArrow.svg'
+---
+<astro-drop-down-ver data-message={message}>
+<button id={"navVertDropDown_"+message.toLowerCase()}  class="link primary dropdownBtn">
+{text}
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 32 32">
+	<path fill="white" d="M8.037 11.166L14.5 22.36c.825 1.43 2.175 1.43 3 0l6.463-11.195c.826-1.43.15-2.598-1.5-2.598H9.537c-1.65 0-2.326 1.17-1.5 2.6z" />
+</svg>
+</button>
+<ol id={"dropContentVert_"+message.toLowerCase()} class="dropdown-content-vertical">
+    {
+        elements.map( (e: { path: string; name: string; }) => (
+        <Link 
+            href={e.path} 
+            text={e.name} 
+            style="primary"
+            isVerticalSubelement={true}
+            isFilled={false}
+            borderVisible={false}
+            data-navLink
+            />
+        ))
+    }
+</ol>
+</astro-drop-down-ver>
+
+<style>
+    .dropdown-content-vertical{
+        display: inline-flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        display: none;
+    }
+    .show{
+        display: inline-flex;
+    }
+</style>
+<script>
+
+    class AstroDropDownVer extends HTMLElement {
+            constructor(){
+                super();
+                const name= this.dataset.message;
+
+                const btn = document.getElementById("navVertDropDown_"+name?.toLocaleLowerCase())
+                let showContent = false;
+
+                const dropContent = document.getElementById("dropContentVert_"+name?.toLocaleLowerCase())
+
+                btn?.addEventListener('click',() => {
+                    if(showContent){
+                        dropContent?.classList.remove("show");
+                        showContent=false
+                    }
+                    else{
+                        dropContent?.classList.add("show");
+                        showContent=true
+                    }
+                    console.log("test")
+
+                })
+
+                window.onclick = (e) =>{
+                    if(e == null) return;
+                }
+            }
+    }
+
+    customElements.define('astro-drop-down-ver',AstroDropDownVer);
+    
+</script>

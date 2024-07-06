@@ -376,6 +376,14 @@ nav{
   z-index: 1;
 }
 
+.subElement{
+  margin-left:0.5em;
+  font-size:70%;
+  gap: var(--space-md) !important;
+}
+
+
+
 .logomark {
   display: grid;
   place-items: center;

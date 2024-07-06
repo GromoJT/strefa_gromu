@@ -11,6 +11,7 @@ interface Props{
     };
     isFilled?:boolean;
     borderVisible?: boolean;
+    isVerticalSubelement?:boolean;
     classes?: string;
 }
 const {
@@ -20,6 +21,7 @@ const {
     icon,
     isFilled = true,
     borderVisible = false,
+    isVerticalSubelement=false,
     classes,
     ...rest
  } = Astro.props as Props;
@@ -30,6 +32,7 @@ const {
     href={href}
     class:list={[
         "link",
+        isVerticalSubelement ? "subElement": "",
         classes,
         style,
         { filled: isFilled , bordered: borderVisible}
