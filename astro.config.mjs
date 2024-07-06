@@ -1,16 +1,15 @@
 import { defineConfig } from 'astro/config';
-import node from "@astrojs/node";
+import netlify from '@astrojs/netlify';
 import icon from "astro-icon";
 import mdx from "@astrojs/mdx";
+
 
 import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
   output: "hybrid",
-  adapter: node({
-    mode: "standalone"
-  }),
+  adapter: netlify(),
   integrations: [icon(), mdx(), react()],
   experimental: {
     actions: true,
