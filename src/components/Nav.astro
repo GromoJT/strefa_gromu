@@ -1,29 +1,29 @@
 ---
 //library imports
-import ToMaszCoMasz_Logo from "../assets/Images/ToMaszCoMasz_Logo.png"
+import ToMaszCoMasz_Logo from "../assets/Images/ToMaszCoMasz_Logo.png";
 //components import
-import Link from "./Link.astro";
-import DropDown from "./DropDown.astro"
-//data imports
-import navData from "../data/navData.js"
 import { Image } from 'astro:assets';
+import Link from "./Link.astro";
+import DropDown from "./DropDown.astro";
+//data imports
+import navData from "../data/navData.js";
+import { Icon } from "astro-icon/components";
 
 ---
 
 <nav aria-label="Primary">
     <div class="navbar">
-        
         <a href="/" class="logomark" aria-label="Go home">
             <Image 
                 src={ToMaszCoMasz_Logo}  
-                width={80} 
-                height={80} 
+                width={75} 
+                height={75} 
                 loading="eager"
                 decoding="async"
                 alt="Logo"/>
         </a>
-        
-        <ul>
+         
+        <ul class="normalTopBar">
             {
                 navData.map((item) => (
                     item.type ==="dropdown" ? 
@@ -40,10 +40,44 @@ import { Image } from 'astro:assets';
                 ))
             }
         </ul>
+
+        <div class="burgerButton" id="menuIcon">
+            <Icon name="burger" size={30}  />
+        </div>
+       
+
+
     
     </div>
 </nav>
 
 <script>
     import "../js/nav.js";    
+
+
 </script>
+
+<style>
+
+    /* custom media query breakpoints */
+    @custom-media --sm (width <=480px);
+    @custom-media --md (width <=926px);
+    @custom-media --lg (width <=1201px);
+    @custom-media --xl (width >=1202px);
+
+    .normalTopBar{
+        @media(--md){
+            display: none;
+        }
+    }
+
+    .burgerButton{
+        display: none;
+
+        
+        @media(--md){
+            color: green;
+            display:inline-table;
+        }
+    }
+</style>

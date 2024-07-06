@@ -5,3 +5,4 @@ navLinks.forEach((link) => {
         link.setAttribute("aria-current","page");
     }
 })
+

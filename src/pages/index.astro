@@ -10,11 +10,32 @@ const allPosts = await getCollection("blog");
 const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts,{
 	limit:3
 });
+import HeroCardComponent from '../components/heroCardComponent.astro';
 ---
 
 <MainPageLayout title="Strefa Gromu">
-	<section class="container hero">
-		<section class="container hero-section" aria-label="Hero section">
+
+		
+	<HeroCardComponent/>
+
+	<section class="container" aria-label="New Blog Posts">
+		<h2 class="h2">Ostatnie wpisy</h2>
+		<div class="post-container">
+			 {
+				formattedPosts.map((post) => 
+				<PostCard 
+					data={post.data} 
+					url={post.slug} 
+					tagType="h3"
+				/> 
+				)
+			} 
+		</div>
+	</section>
+</MainPageLayout> 
+
+<!-- 
+<section class="container hero-section" aria-label="Hero section">
 			<div class="infoPart">
 				<h1 class="h1">Witaj w strefie gromu!</h1>
 				<hr class="line">
@@ -38,24 +59,4 @@ const formattedPosts: CollectionEntry<"blog">[] = formatBlogPosts(allPosts,{
 				/>
 			</div>
 		</section>
-	
-	
-	
-	
-		<section class="container" aria-label="New Blog Posts">
-			<h2 class="h2">Ostatnie wpisy</h2>
-			<div class="post-container">
-				 {
-					formattedPosts.map((post) => 
-					<PostCard 
-						data={post.data} 
-						url={post.slug} 
-						tagType="h3"
-					/> 
-					)
-				} 
-			</div>
-		</section>
-	</section>
-</MainPageLayout> 
-
+-->

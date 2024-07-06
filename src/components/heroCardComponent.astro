@@ -1,0 +1,112 @@
+---
+import Image from "astro/components/Image.astro"
+import JA_plecy from "../assets/Images/ja_plecy.png"
+import Kierunkowskaz from "../assets/Images/kierunkowskaz.png"
+import StrefaGromuHero from "../assets/Images/strefa_gromu_hero.png"
+
+---
+<div class="hero-container">
+    <div class="hero-text">
+        <h1>Pora nieco zagrzmieć!<br/>
+        Trzeba zabłysnąć i <br/>porazić wszystkich wkoło </h1>
+        <p>Nowicjusz w świecie IT szuka swojego miejsca.<br/> Ta strona ma pomóc w prezentacji mojej osoby oraz być motywatorem do tworzenia i dzielenia się nowymi rzeczami które staram sie zrobić</p>
+        <button>Napisz do mnie!</button>
+    </div>
+    <!-- <div class="hero-images">
+        <Image 
+            src={StrefaGromuHero} 
+            alt="Ja niewiedzący gdzie iść" 
+            class="h-image-1"
+            format="webp"
+            decoding="async"
+            loading="lazy"
+            quality={80}/>
+       
+    </div> -->
+
+</div>
+<style define:vars={{StrefaGromuHero}}>
+    /* custom media query breakpoints */
+    @custom-media --sm (width <=600px);
+    @custom-media --md (width <=926px);
+    @custom-media --lg (width <=1201px);
+    @custom-media --xl (width >=1201px);
+
+    .hero-container{
+        margin: 0;
+        padding: 0;
+        height: 80vh;
+        width: 100%;
+        background-color: #1F1F29;
+        background-image: radial-gradient(circle, rgba(31,31,41,0) 52%, rgba(31,31,41,1) 77%),url("/images/strefa_gromu_hero.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-clip: content-box;
+        background-position-y: 0rem,0rem;
+        background-position-x: 20rem, 20rem;
+        /* background-attachment: fixed; */
+        @media(--lg){
+            background-position-y: 0rem,0rem;
+            background-position-x: 15rem, 15rem;
+        }
+        @media(--md){
+            background-position-y: 0rem,0rem;
+            background-position-x: 0rem, -5rem;
+        }
+        @media(--sm){
+            background-position-y: 0rem,0rem;
+            background-position-x: -0rem, -15rem;
+        }
+
+    }
+    .hero-text{
+        padding: 3.2rem;
+        
+        /* @media(--md){
+            color: red;
+        } */
+        
+        h1{
+            color:white;
+            font-size: 3rem;
+            font-weight: bolder;
+            @media(--md){
+                font-size: 2rem;
+            }
+        }
+        p{
+            margin-top:3rem;
+            font-size: 1.2rem;
+            @media(--sm){
+                color: white;
+            }
+        }
+        button{
+            margin-top: 3rem;
+            background-color: #19B946 ;
+            border: #19B946;
+            padding: 10px;
+            color:white;
+        }
+    }
+    .hero-images{
+        position: relative;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+    }
+
+    .h-image-1{
+        position: absolute;
+        height: 320px;
+        width: auto;
+        left:35%
+    }
+    .h-image-2{
+        position: absolute;
+        height: 500px;
+        width: auto;
+
+    }
+</style>

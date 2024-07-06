@@ -335,7 +335,7 @@ button {
 
 [aria-label="Primary"] {
   width: 100%;
-  padding-block: var(--space-xs);
+  /* padding-block: var(--space-xs); */
   background-color: hsl(var(--muted));
   box-shadow: var(--shadow-sm);
 
@@ -345,7 +345,13 @@ button {
   }
 }
 
+nav{
+  position:fixed;
+  top:0;
+}
+
 .navbar {
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -362,7 +368,7 @@ button {
 
 .dropdown-content {
   background-color: hsl(var(--muted));
-  top:100px;
+  top:3.4em;
   display:none;
   position: absolute;
   min-width: 160px;
@@ -373,7 +379,8 @@ button {
 .logomark {
   display: grid;
   place-items: center;
-  padding: var(--space-2xs);
+  min-height:75px;
+  /* padding: var(--space-2xs); */
 }
 
 [aria-label="Blog pages"] {
@@ -386,6 +393,9 @@ button {
 }
 .hide{
   display:none;
+}
+.hidden {
+  display: none;
 }
 /* footer */
 
@@ -588,7 +598,7 @@ header {
 
     position: -webkit-sticky;
     position: sticky;
-    top: 0;
+    top: 3.5em;
     
 
     @media (--md) {
