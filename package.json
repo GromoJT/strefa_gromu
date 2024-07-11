@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "astro dev --watch",
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
@@ -18,14 +18,17 @@
     "@astrojs/tailwind": "^5.1.0",
     "@iconify-json/ph": "^1.1.13",
     "@iconify-json/tabler": "^1.1.113",
+    "@nanostores/react": "^0.7.2",
     "@tabler/icons-react": "^3.5.0",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "astro": "^4.9.1",
     "astro-icon": "^1.1.0",
+    "nanostores": "^0.10.3",
     "postcss-preset-env": "^9.5.14",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-icons": "^5.2.1",
     "typescript": "^5.4.5"
   }
 }

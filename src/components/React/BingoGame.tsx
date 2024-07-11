@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { useEffect, useState } from "react"
-import { BingoInputForm } from "./bingoComponents/BingoInputForm"
-import BingoList from "./bingoComponents/BingoListComponent"
+import { BingoInputForm } from "../bingoComponents/BingoInputForm"
+import BingoList from "../bingoComponents/BingoListComponent"
 
 
 

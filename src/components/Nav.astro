@@ -28,7 +28,10 @@ import { Icon } from "astro-icon/components";
             {
                 navData.map((item) => (
                     item.type ==="dropdown" ? 
-                    <DropDown text={item.name} elements={item.elements} message={item.name}/>
+                    <DropDown 
+                    text={item.name} 
+                    elements={item.elements} 
+                    message={item.name}/>
                     :
                     <Link 
                         href={item.path as string} 

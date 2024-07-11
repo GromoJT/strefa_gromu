@@ -16,7 +16,6 @@ nav :where(ol, ul) {
 
 img,
 picture {
-  width: 100%;
   max-width: 100%;
   display: block;
   height:max-content
@@ -171,6 +170,11 @@ h6 {
 @custom-media --md (width >=926px);
 @custom-media --lg (width >=1201px);
 @custom-media --xl (width >=1440px);
+
+@custom-media --rsm (width <=480px);
+@custom-media --rmd (width <=926px);
+@custom-media --rlg (width <=1201px);
+@custom-media --rxl (width <=1440px);
 
 body {
   min-height: 100vh;
@@ -752,4 +756,60 @@ header {
 
 strong{
   font-weight: bolder;
+}
+
+.normalTopBar{
+  display:flex;
+  @media(--rmd){
+      display: none !important;
+  }
+  z-index: 999;
+}
+
+.burgerButton{
+  display: none;
+
+  @media(--rmd){
+      display:inline-flex;
+      align-items:center;
+      
+  }
+}
+.closeButton{
+  background-color: red;
+  margin: 3px;
+  border-radius: 1em;
+  display: flex;
+  justify-content: center;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.vertical-nav-container{
+  display: none;
+  /* @media(--md){
+      display: block;
+  } */
+  position: absolute;
+  background-color: black;
+  width: 33vw;
+  height: 100vh;
+  top:0;
+  right: 0;
+  z-index: 1;
+  
+}
+
+.show{
+  @media(--md){
+      display: block;
+  }
+}
+
+.verticalBar{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 80lvh;
 }

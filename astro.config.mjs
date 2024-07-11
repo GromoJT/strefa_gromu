@@ -10,7 +10,19 @@ import react from "@astrojs/react";
 export default defineConfig({
   output: "hybrid",
   adapter: netlify(),
-  integrations: [icon(), mdx(), react()],
+  integrations: [
+    icon(), 
+    mdx(), 
+    react({
+      include: ["**/react/*"],
+    }),
+  ],
+  vite: {
+    ssr: {
+      noExternal: ["react-icons"],
+    },
+  },
+  
   experimental: {
     actions: true,
   },

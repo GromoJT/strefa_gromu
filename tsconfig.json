@@ -1,6 +1,9 @@
 {
   "extends": "astro/tsconfigs/base",
   "compilerOptions": {
+    "module": "esnext",
+    "target": "ESNext",
+    "moduleResolution": "Node",
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "strictNullChecks": true,

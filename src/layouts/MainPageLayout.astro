@@ -4,18 +4,22 @@ import Nav from '../components/Nav.astro';
 import "../styles/global.css"
 import Footer from '../components/Footer.astro';
 
+import NavReact from '../components/React/NavReact';
+
 interface Props {
 	title: string;
 }
 
 const { title } = Astro.props;
+
 ---
 
 <!doctype html>
 <html lang="en">
     <MainHead title={title}/>
 	<body>
-        <Nav/>
+		<NavReact client:load client:only="react" />
+        <!-- <Nav/> -->
 		<div style={{paddingTop:"3.5em"}}/>
 		<slot/>
 		<Footer/>
