@@ -1,0 +1,23 @@
+---
+import MainHead from './MainHead.astro';
+import "../styles/global.css"
+import ExNavBar from '../components/React/ExNavBar';
+
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+---
+
+<!doctype html>
+<html lang="en">
+    <MainHead title={title}/>
+	<body>
+        <ExNavBar client:load />
+		<div style={{paddingTop:"3.5em"}}/>
+		<slot/>
+	</body>
+</html>

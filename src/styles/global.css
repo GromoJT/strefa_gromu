@@ -373,7 +373,6 @@ nav{
 .dropdown-content {
   background-color: hsl(var(--muted));
   top:3.4em;
-  display:none;
   position: absolute;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
@@ -479,14 +478,13 @@ nav{
   gap: var(--space-md);
   align-items: start;
 
-  @media (--md) {
-    .post-container {
-      grid-template-columns: 1fr 1fr;
-      background-color:red;
-    }
+
+  @media (--rmd) {
+    grid-template-columns: 1fr ;
+    align-items:center;
   }
 
-  @media (--lg) {
+  @media (--md) {
     grid-template-columns: 1fr 1fr 1fr;
   }
 
@@ -558,6 +556,15 @@ nav{
       font-size: 1rem;
     }
   
+  }
+
+  @media (--rmd) {
+    max-width: 75%;
+    margin:auto;
+    
+    & a > img{
+      width:100%;
+    }
   }
 }
 
@@ -786,10 +793,6 @@ strong{
 }
 
 .vertical-nav-container{
-  display: none;
-  /* @media(--md){
-      display: block;
-  } */
   position: absolute;
   background-color: black;
   width: 33vw;

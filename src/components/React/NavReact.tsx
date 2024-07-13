@@ -1,12 +1,14 @@
 'use client'
 import ToMaszCoMasz_Logo from "../../assets/Images/ToMaszCoMasz_Logo.png";
 import navData from "../../data/navData.js";
-import StandardDropDownReact from "./standardDropDownReact.tsx";
-import LinkReact from "./LinkReact.tsx";
+import standardDropDownReact from "./standardDropDownReact";
+import LinkReact from "./LinkReact";
 import { useEffect, useState } from "react";
 import { setWindowWidth,windowWidth } from "../../data/stores/windowWidthStore.js";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoClose } from "react-icons/io5";
+import SideNavReact from "./SideNavReact";
+import StandardDropDownReact from "./standardDropDownReact";
 
 export const prerender = false;
 
@@ -17,7 +19,7 @@ const NavReact = () => {
     useEffect(()=>{
         function updateSize() {
             setWindowWidth(window.innerWidth)
-            
+            setSideMenuOpen(false)
           }
           window.addEventListener('resize', updateSize);
           updateSize();
@@ -60,10 +62,15 @@ const NavReact = () => {
                     }
                 </ul>
 
-                <div className="burgerButton" id="menuIcon" >
+                <div className="burgerButton" id="menuIcon" onClick={() => setSideMenuOpen((prev) => !prev)}>
                     <RxHamburgerMenu size="35px"/>
                 </div>
-
+                
+                {
+                    sideMenuOpen ?
+                    <SideNavReact close={()=>setSideMenuOpen((prev) => !prev)}/> 
+                    : null
+                }
 
 
 

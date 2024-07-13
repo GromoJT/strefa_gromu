@@ -3,13 +3,18 @@ const navData = [
         name: "Projekty",
         type:"dropdown",
         elements:[
+           
+            {
+                name: "Programiki",
+                path: "/programs",
+            },
             {
                 name: "GameDev",
                 path: "/gamedev",
             },
             {
-                name: "Programiki",
-                path: "/programs",
+                name: "ExclucionZone",
+                path: "/exzone",
             },
         ],
         
