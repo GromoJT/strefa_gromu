@@ -1,0 +1,75 @@
+---
+
+---
+
+<!-- Cal element-click embed code begins -->
+<script type="text/javascript">
+    (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "secret", {origin:"https://cal.com"});
+  
+    
+    // Important: Please add the following attributes to the element that should trigger the calendar to open upon clicking.
+    // `data-cal-link="tomasz-jankiewicz-txfjqv/secret"`
+    // data-cal-namespace="secret"
+    // `data-cal-config='{"layout":"month_view"}'`
+  
+    Cal.ns.secret("ui", {"styles":{"branding":{"brandColor":"#000000"}},"hideEventTypeDetails":false,"layout":"month_view"});
+    </script>
+    <!-- Cal element-click embed code ends -->
+<div data-cal-link="tomasz-jankiewicz-txfjqv/secret" data-cal-namespace="secret" data-cal-config='{"layout":"month_view"}' class="fab-button" id="fab-button" onclick="{`window.${id}.showModal()`}">
+   Cal.com
+</div>
+
+
+<script>
+ const dialog = document.querySelector("dialog");
+ const FAB = document.getElementById("fab-button");
+ const closeButton = document.querySelector("dialog button");
+ FAB?.addEventListener("click", () => {
+    dialog?.showModal();
+ })
+ dialog?.addEventListener('click', function(event) {
+  var rect = dialog?.getBoundingClientRect();
+  var isInDialog = (rect.top <= event.clientY && event.clientY <= rect.top + rect.height &&
+    rect.left <= event.clientX && event.clientX <= rect.left + rect.width);
+  if (!isInDialog) {
+    dialog.close();
+  }
+});
+</script>
+
+<style>
+
+    .fab-button{      
+        position: fixed;
+        bottom: 25px;
+        right: 225px;
+        z-index:999;
+        cursor: pointer;
+        background-color: red;
+        height: 50px;
+        width: 130px;
+        border-radius: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+    }
+    dialog {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: 65%;
+    border: none;
+    &::backdrop {
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      background: rgba(0, 0, 0, 0.4);
+    }
+  }
+</style>

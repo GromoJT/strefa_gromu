@@ -1,0 +1,20 @@
+---
+import MainHead from './MainHead.astro';
+import "../styles/global.css"
+
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+---
+
+<!doctype html>
+<html lang="en">
+    <MainHead title={title}/>
+	<body>
+		<slot/>
+	</body>
+</html>
+

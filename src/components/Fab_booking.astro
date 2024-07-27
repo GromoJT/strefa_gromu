@@ -1,0 +1,66 @@
+---
+const {id, open} = Astro.props;
+---
+
+<dialog>
+    <div class="tidycal-embed" data-path="janekj113/30-minute-meeting"></div>
+    <script src="https://asset-tidycal.b-cdn.net/js/embed.js" async></script>
+</dialog>
+
+<div class="fab-button" id="fab-button" onclick="{`window.${id}.showModal()`}">
+   TidyCal
+</div>
+
+
+<script>
+ const dialog = document.querySelector("dialog");
+ const FAB = document.getElementById("fab-button");
+ const closeButton = document.querySelector("dialog button");
+ FAB?.addEventListener("click", () => {
+    dialog?.showModal();
+ })
+ dialog?.addEventListener('click', function(event) {
+  var rect = dialog?.getBoundingClientRect();
+  var isInDialog = (rect.top <= event.clientY && event.clientY <= rect.top + rect.height &&
+    rect.left <= event.clientX && event.clientX <= rect.left + rect.width);
+  if (!isInDialog) {
+    dialog.close();
+  }
+});
+</script>
+
+<style>
+
+    .fab-button{      
+        position: fixed;
+        bottom: 25px;
+        right: 25px;
+        z-index:999;
+        cursor: pointer;
+        background-color: green;
+        height: 50px;
+        width: 130px;
+        border-radius: 2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+    }
+    dialog {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 75%;
+    height: 65%;
+    border: none;
+    &::backdrop {
+      position: fixed;
+      top: 0px;
+      right: 0px;
+      bottom: 0px;
+      left: 0px;
+      background: rgba(0, 0, 0, 0.4);
+    }
+  }
+</style>
